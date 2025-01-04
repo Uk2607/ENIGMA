@@ -19,9 +19,9 @@ void showEnigmaSetting() {
         if((i+1)%7==0) cout<<"\n";
     } cout<<"\n\n";
     cout<<"Rotor #1 Configuration with current index <"<<r1idx<<"> :: ";
-    for(pair<int, int>p: rotor1) cout<<(char)(p.first+'A'); cout<<"\n";
+    for(pair<int, int>p: rotor1) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
     cout<<"Rotor #2 Configuration with current index <"<<r2idx<<"> :: ";
-    for(pair<int, int>p: rotor2) cout<<(char)(p.first+'A'); cout<<"\n";
+    for(pair<int, int>p: rotor2) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
     cout<<"Rotor #3 Configuration with current index <"<<r3idx<<"> :: ";
     for(pair<int, int>p: rotor3) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
 }
