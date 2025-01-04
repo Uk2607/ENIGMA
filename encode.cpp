@@ -12,6 +12,20 @@ int r1idx, r2idx, r3idx;
 vector<int>plug_board;
 vector<pair<int,int>>rotor1, rotor2, rotor3;
 
+void showEnigmaSetting() {
+    cout<<"Plugboard Configuration::\n";
+    for(int i=0;i<N;i++) {
+        cout<<"["<<(char)(i+'a')<<" <-> "<<(char)(plug_board[i]+'a')<<"] ";
+        if((i+1)%7==0) cout<<"\n";
+    } cout<<"\n\n";
+    cout<<"Rotor #1 Configuration with current index <"<<r1idx<<"> :: ";
+    for(pair<int, int>p: rotor1) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
+    cout<<"Rotor #2 Configuration with current index <"<<r2idx<<"> :: ";
+    for(pair<int, int>p: rotor2) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
+    cout<<"Rotor #3 Configuration with current index <"<<r3idx<<"> :: ";
+    for(pair<int, int>p: rotor3) cout<<(char)(p.first+'A')<<" "; cout<<"\n";
+}
+
 vector<int> createPlugBoardSeq() {
     vector<int>plugboard(N);
     for(int i=0;i<N;i++) plugboard[i] = i;
@@ -179,6 +193,8 @@ int main() {
     rotor1 = createRotorMapping(rotor1_seq);
     rotor2 = createRotorMapping(rotor2_seq);
     rotor3 = createRotorMapping(rotor3_seq);
+
+    showEnigmaSetting();
 
     cout<<"Enter your string without spaces: ";
     string ip, enc;
