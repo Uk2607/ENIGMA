@@ -74,7 +74,6 @@ string encodeString(string str) {
 }
 
 int main() {
-    srand(time(0));
     vector<int>rotor1_seq, rotor2_seq, rotor3_seq;
     string line;
     vector<string>lines;

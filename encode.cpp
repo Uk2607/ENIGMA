@@ -2,6 +2,8 @@
 #include<vector>
 #include<string>
 #include<fstream>
+#include<sstream>
+#include<cassert>
 
 using namespace std;
 
@@ -108,26 +110,70 @@ string encodeString(string str) {
 }
 
 int main() {
-    srand(time(0));
-    vector<int>plug_board_seq = createPlugBoardSeq();
-    vector<int>rotor1_seq = createRotorSeq();
-    vector<int>rotor2_seq = createRotorSeq();
-    vector<int>rotor3_seq = createRotorSeq();
 
-    r1idx = rand()%26, r2idx = rand()%26, r3idx = rand()%26;
+    cout<<"How do you want to use enigma:\n1. Use exisitng setting\nOR Create new setting\n-> ";
+    int op;
+    cin>>op;
 
-    ofstream file;
-    file.open("mac_setting.txt");
-    file<<"Plug Board:: ";
-    for(int x: plug_board_seq) file<<(char)(x+'A'); file<<"\n";
-    file<<"Rotor#1 <pos:"<<r1idx<<">:: ";
-    for(int x: rotor1_seq) file<<(char)(x+'A'); file<<"\n";
-    file<<"Rotor#2 <pos:"<<r2idx<<">:: ";
-    for(int x: rotor2_seq) file<<(char)(x+'A'); file<<"\n";
-    file<<"Rotor#3 <pos:"<<r3idx<<">:: ";
-    for(int x: rotor3_seq) file<<(char)(x+'A'); file<<"\n";
+    vector<int>plug_board_seq, rotor1_seq, rotor2_seq, rotor3_seq;
+    if(op==1) {
+        string line;
+        vector<string>lines;
 
-    file.close();
+        ifstream file;
+        file.open("mac_setting.txt");
+        
+        while(getline(file, line)) lines.push_back(line);
+
+        file.close();
+
+        for(int i=0;i<lines.size();i++) {
+            stringstream ss(lines[i]);
+            if(i==0) {
+                string _, seq;
+                ss>>_>>_>>seq;
+                for(char c: seq) plug_board.push_back(c-'A');
+            } else {
+                string _, p, seq;
+                ss>>_>>p>>seq;
+                int idx = stoi(p.substr(5, p.length()-8));
+                vector<int>r;
+                for(char c: seq) r.push_back(c-'A');
+                if(i==1) {
+                    r1idx = idx;
+                    rotor1_seq = r;
+                } else if(i==2) {
+                    r2idx = idx;
+                    rotor2_seq = r;
+                } else if(i==3) {
+                    r3idx = idx;
+                    rotor3_seq = r;
+                } else assert(false);
+            }
+        }
+    } else {
+
+        srand(time(0));
+        plug_board_seq = createPlugBoardSeq();
+        rotor1_seq = createRotorSeq();
+        rotor2_seq = createRotorSeq();
+        rotor3_seq = createRotorSeq();
+
+        r1idx = rand()%26, r2idx = rand()%26, r3idx = rand()%26;
+
+        ofstream file;
+        file.open("mac_setting.txt");
+        file<<"Plug Board:: ";
+        for(int x: plug_board_seq) file<<(char)(x+'A'); file<<"\n";
+        file<<"Rotor#1 <pos:"<<r1idx<<">:: ";
+        for(int x: rotor1_seq) file<<(char)(x+'A'); file<<"\n";
+        file<<"Rotor#2 <pos:"<<r2idx<<">:: ";
+        for(int x: rotor2_seq) file<<(char)(x+'A'); file<<"\n";
+        file<<"Rotor#3 <pos:"<<r3idx<<">:: ";
+        for(int x: rotor3_seq) file<<(char)(x+'A'); file<<"\n";
+
+        file.close();
+    }
 
     plug_board = plug_board_seq;
     rotor1 = createRotorMapping(rotor1_seq);
