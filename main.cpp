@@ -98,7 +98,7 @@ char encodeFromRotors(char c, vector<pair<int, int>>&rotor1, vector<pair<int, in
     }
     if(r2idx == 0) {
         r3idx = (r3idx+1)%N;
-        rotateRotor(rotor1);
+        rotateRotor(rotor3);
     }
     c = rotor1[c-'a'].first + 'a';
     c = rotor2[c-'a'].first + 'a';
