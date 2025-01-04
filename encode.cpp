@@ -85,13 +85,13 @@ void encodeFromRotors(char &c) {
         r3idx = (r3idx+1)%N;
         rotateRotor(rotor3);
     }
-    c = rotor1[c-'a'].first + 'a';
-    c = rotor2[c-'a'].first + 'a';
-    c = rotor3[c-'a'].first + 'a';
-    c = (25-(c-'a'))+'a'; // Reflector we can made custom reflector
-    c = rotor3[c-'a'].second + 'a';
-    c = rotor2[c-'a'].second + 'a';
-    c = rotor1[c-'a'].second + 'a';
+    c = rotor1[c-'A'].first + 'A';
+    c = rotor2[c-'A'].first + 'A';
+    c = rotor3[c-'A'].first + 'A';
+    c = (25-(c-'A'))+'A'; // Reflector we can made custom reflector
+    c = rotor3[c-'A'].second + 'A';
+    c = rotor2[c-'A'].second + 'A';
+    c = rotor1[c-'A'].second + 'A';
 }
 
 char simulateEnigma(char c) {
