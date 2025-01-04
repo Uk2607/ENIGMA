@@ -19,8 +19,8 @@ This project is a C++ implementation of the Enigma machine, a cipher device used
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/enigma-simulator.git
-   cd enigma-simulator
+   git clone https://github.com/Uk2607/ENIGMA.git
+   cd ENIGMA
    ```
 
 2. Compile the code:
@@ -77,5 +77,3 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 - Special thanks to the open-source community for their contributions to C++ development.
 
 ---
-
-Feel free to modify the README as needed to better fit your project's specifics or to add any additional information!
