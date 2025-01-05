@@ -129,13 +129,18 @@ int main() {
     int op;
     cin>>op;
 
+    string enigma_config_file_path = "enigma_config.txt";
+
     vector<int>plug_board_seq, rotor1_seq, rotor2_seq, rotor3_seq;
     if(op==1) {
         string line;
         vector<string>lines;
 
-        ifstream file;
-        file.open("enigma_config.txt");
+        ifstream file(enigma_config_file_path);
+        if (!file.is_open()) {
+            cerr << "Failed to open file: " << enigma_config_file_path << endl;
+            return 0;
+        }
         
         while(getline(file, line)) lines.push_back(line);
 
@@ -176,7 +181,7 @@ int main() {
         r1idx = rand()%26, r2idx = rand()%26, r3idx = rand()%26;
 
         ofstream file;
-        file.open("enigma_config.txt");
+        file.open(enigma_config_file_path);
         file<<"Plug Board:: ";
         for(int x: plug_board_seq) file<<(char)(x+'A'); file<<"\n";
         file<<"Rotor#1 <pos:"<<r1idx<<">:: ";

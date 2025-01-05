@@ -88,12 +88,18 @@ string encodeString(string str) {
 }
 
 int main() {
+
+    string enigma_config_file_path = "enigma_config.txt";
+
     vector<int>rotor1_seq, rotor2_seq, rotor3_seq;
     string line;
     vector<string>lines;
 
-    ifstream file;
-    file.open("enigma_config.txt");
+    ifstream file(enigma_config_file_path);
+    if (!file.is_open()) {
+        cerr << "Failed to open file: " << enigma_config_file_path << endl;
+        return 0;
+    }
     
     while(getline(file, line)) lines.push_back(line);
 
