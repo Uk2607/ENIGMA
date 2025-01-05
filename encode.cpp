@@ -205,5 +205,10 @@ int main() {
     enc = encodeString(ip);
     cout<<"Encoded string:: "<<enc<<"\n";
 
+    ofstream file;
+    file.open("encoded.txt");
+    file<<enc<<"\n";
+    file.close();
+
     return 0;
 }
