@@ -95,7 +95,7 @@ HELLOWORLD
 ```
 Output:
 ```
-Encrypted Message: XMCKLZWOAL
+Encoded string:: XMCKLZWOAL
 Settings Saved: enigma_config.txt
 ```
 
@@ -106,7 +106,7 @@ XMCKLZWOAL
 ```
 Output:
 ```
-Decrypted Message: HELLOWORLD
+Decoded string:: HELLOWORLD
 ```
 
 ---

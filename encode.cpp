@@ -135,7 +135,7 @@ int main() {
         vector<string>lines;
 
         ifstream file;
-        file.open("mac_setting.txt");
+        file.open("enigma_config.txt");
         
         while(getline(file, line)) lines.push_back(line);
 
@@ -176,7 +176,7 @@ int main() {
         r1idx = rand()%26, r2idx = rand()%26, r3idx = rand()%26;
 
         ofstream file;
-        file.open("mac_setting.txt");
+        file.open("enigma_config.txt");
         file<<"Plug Board:: ";
         for(int x: plug_board_seq) file<<(char)(x+'A'); file<<"\n";
         file<<"Rotor#1 <pos:"<<r1idx<<">:: ";

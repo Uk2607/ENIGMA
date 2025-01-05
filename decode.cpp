@@ -93,7 +93,7 @@ int main() {
     vector<string>lines;
 
     ifstream file;
-    file.open("mac_setting.txt");
+    file.open("enigma_config.txt");
     
     while(getline(file, line)) lines.push_back(line);
 
